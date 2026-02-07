@@ -3,7 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     id("com.google.dagger.hilt.android")
-    id("com.google.devtools.ksp") version "2.0.21-1.0.25" // Replace with your version
+    id("com.google.devtools.ksp") version "2.3.2" // Replace with your version
 }
 
 android {
@@ -44,6 +44,7 @@ android {
 }
 
 dependencies {
+    val room_version = "2.8.4"
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -67,5 +68,8 @@ dependencies {
     ksp("com.google.dagger:hilt-android-compiler:2.59.1")
     implementation("io.coil-kt.coil3:coil-compose:3.3.0")
     implementation("io.coil-kt.coil3:coil-network-okhttp:3.3.0")
+
+    implementation("androidx.room:room-runtime:$room_version")
+    ksp("androidx.room:room-compiler:$room_version")
 
 }
