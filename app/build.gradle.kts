@@ -6,7 +6,7 @@ plugins {
     id("com.google.devtools.ksp") version "2.3.2" // Replace with your version
 }
 
-android {
+android{
     namespace = "com.example.everydaysurvival"
     compileSdk {
         version = release(36)
@@ -60,16 +60,19 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
-//Retrofit
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-// gson converter
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation("com.google.dagger:hilt-android:2.57.1")
-    ksp("com.google.dagger:hilt-android-compiler:2.59.1")
-    implementation("io.coil-kt.coil3:coil-compose:3.3.0")
-    implementation("io.coil-kt.coil3:coil-network-okhttp:3.3.0")
 
-    implementation("androidx.room:room-runtime:$room_version")
-    ksp("androidx.room:room-compiler:$room_version")
+
+
+//Retrofit
+    implementation(libs.retrofit)
+// gson converter
+    implementation(libs.converter.gson)
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.android.compiler)
+    implementation(libs.coil.compose)
+    implementation(libs.coil.network.okhttp)
+
+    implementation(libs.androidx.room.runtime)
+    ksp(libs.androidx.room.compiler)
 
 }
