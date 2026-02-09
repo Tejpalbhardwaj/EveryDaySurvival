@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">EveryDay Survival</string>
+    <string name="help_faqs">Help &amp; FAQs</string>
+    <string name="how_can_we_help">How Can We Help You?</string>
+    <string name="faq">FAQ</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="general">General</string>
+    <string name="account">Account</string>
+    <string name="services">Services</string>
+    <string name="lorem_ipsum_question">Lorem ipsum dolor sit amet?</string>
+    <string name="lorem_ipsum_answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pellentesque congue lorem, vel tincidunt tortor placerat a. Proin ac diam quam. Aenean in sagittis magna, ut feugiat diam.</string>
 </resources>
