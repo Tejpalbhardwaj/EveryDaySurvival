@@ -7,11 +7,19 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -21,16 +29,18 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.everydaysurvival.R
 import com.example.everydaysurvival.model.Post
 import com.example.everydaysurvival.ui.theme.cardColor
 
-
 @Composable
-fun PostCard(post: Post) {
+fun PostCard(
+    post: Post,
+    onSaveClick: (Post) -> Unit ,
+    isSaved: Boolean =false
+) {
     Card(
         modifier = Modifier
             .fillMaxWidth(),
@@ -38,15 +48,35 @@ fun PostCard(post: Post) {
         elevation = CardDefaults.cardElevation(6.dp)
     ) {
         Column {
-            Image(
-                painter = painterResource(id = post.imageRes),
-                contentDescription = post.title,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(200.dp),
-                contentScale = ContentScale.Crop
-            )
-
+            Box {
+                Image(
+                    painter = painterResource(id = post.imageRes),
+                    contentDescription = post.title,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(200.dp),
+                    contentScale = ContentScale.Crop
+                )
+                Box(modifier = Modifier
+                    .padding(12.dp)
+                    .align(Alignment.TopEnd)) {
+                    IconButton(
+                        onClick = { onSaveClick(post) },
+                        modifier = Modifier
+                            .padding(4.dp)
+                            .align(Alignment.TopEnd)
+                            .size(32.dp)
+                            .background(Color.Black.copy(0.35f), CircleShape)
+                    ) {
+                        Icon(
+                            if (isSaved) Icons.Default.Favorite else Icons.Default.FavoriteBorder  ,
+                            contentDescription = null,
+                            tint = Color.White,
+                            modifier = Modifier.size(24.dp)
+                        )
+                    }
+                }
+            }
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
